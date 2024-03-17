@@ -1,4 +1,6 @@
 print("running bracket.py")
+import gameSims
+
 class BracketNode:
   def __init__(self, team=None, seed=None, round=0, region=0):
     self.team = team
@@ -33,7 +35,8 @@ def createBracket():
 
 def traverseBracket(node):
   if node is not None:
-    if node.round > 0:
-      print(f"round: {node.round} | region: {node.region} | matchup: {node.left.seed}-{node.right.seed} | winning seed: {node.seed}")
     traverseBracket(node.left)
     traverseBracket(node.right)
+    if node.round > 0:
+      node.seed = gameSims.playGame(node.left.seed, node.right.seed)
+      print(f"round: {node.round} | region: {node.region} | matchup: {node.left.seed}-{node.right.seed} | winning seed: {node.seed}")
