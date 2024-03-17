@@ -33,10 +33,7 @@ def createBracket():
 
 def traverseBracket(node):
   if node is not None:
-    print(f"round: {node.round} | region: {node.region} | team: {node.team} | seed: {node.seed}")
+    if node.round > 0:
+      print(f"round: {node.round} | region: {node.region} | matchup: {node.left.seed}-{node.right.seed} | winning seed: {node.seed}")
     traverseBracket(node.left)
     traverseBracket(node.right)
-
-
-# root = createBracket()
-# traverseBracket(root)
