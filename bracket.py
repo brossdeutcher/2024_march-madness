@@ -1,4 +1,3 @@
-print("running bracket.py")
 import gameSims
 
 class BracketNode:
@@ -33,10 +32,10 @@ def createBracket():
   generateRound(root, firstRoundSeeds, regions)
   return root
 
-def traverseBracket(node):
+def populateBracket(node):
   if node is not None:
-    traverseBracket(node.left)
-    traverseBracket(node.right)
+    populateBracket(node.left)
+    populateBracket(node.right)
     if node.round > 0:
       node.seed = gameSims.playGame(node.left.seed, node.right.seed)
       print(f"round: {node.round} | region: {node.region} | matchup: {node.left.seed}-{node.right.seed} | winning seed: {node.seed}")

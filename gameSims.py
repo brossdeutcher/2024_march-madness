@@ -2,10 +2,10 @@ import pandas as pd
 import random
 
 def getUpsetPercent(seed1, seed2):
-    df = pd.read_csv("upset-percents.csv", encoding='utf-16')
-
     favoriteSeed = min(seed1, seed2)
     upsetSeed = max(seed1, seed2)
+
+    df = pd.read_csv("upset-percents.csv", encoding='utf-16')
     matching_rows = df.loc[(df['favorite_seed'] == favoriteSeed) & (df['underdog_seed'] == upsetSeed), 'upset_percent']
 
     if not matching_rows.empty:
